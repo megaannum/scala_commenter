@@ -1028,7 +1028,6 @@ if g:self#IN_DEVELOPMENT_MODE
 endif
 function! s:loadInfoPrototype()
   if !exists("s:InfoPrototype")
-    " let s:InfoPrototype = g:loadObjectPrototype().create()
     let s:InfoPrototype = self#LoadObjectPrototype().clone('Info')
     let s:InfoPrototype.__ctype = s:UNKNOWN_TYPE
     let s:InfoPrototype.__descriptionSpace = 0
@@ -1122,8 +1121,6 @@ if g:self#IN_DEVELOPMENT_MODE
 endif
 function! s:loadTagsSetPrototype()
   if !exists("s:TagsSetPrototype")
-    " let s:TagsSetPrototype = g:loadObjectPrototype().create()
-    " let s:TagsSetPrototype._type = 'TagsSetPrototype'
     let s:TagsSetPrototype = self#LoadObjectPrototype().clone('TagsSet')
     let s:TagsSetPrototype.__tags = { }
 
@@ -1247,8 +1244,6 @@ if g:self#IN_DEVELOPMENT_MODE
 endif
 function! s:loadBaseTagPrototype()
   if !exists("s:BaseTagPrototype")
-    " let s:BaseTagPrototype = g:loadObjectPrototype().create()
-    " let s:BaseTagPrototype._type = 'BaseTagPrototype'
     let s:BaseTagPrototype = self#LoadObjectPrototype().clone('BaseTag')
     let s:BaseTagPrototype.__tagName = ''
     let s:BaseTagPrototype.__hasValue = g:self#IS_FALSE
@@ -2036,8 +2031,6 @@ if g:self#IN_DEVELOPMENT_MODE
 endif
 function! s:loadAbstractEntityPrototype()
   if !exists("s:AbstractEntityPrototype")
-    " let s:AbstractEntityPrototype = g:loadObjectPrototype().create()
-    " let s:AbstractEntityPrototype._type = 'AbstractEntityPrototype'
     let s:AbstractEntityPrototype = self#LoadObjectPrototype().clone('AbstractEntity')
     let s:AbstractEntityPrototype.__standardTags = []
     let s:AbstractEntityPrototype.__name = ''

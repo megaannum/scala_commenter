@@ -5,7 +5,7 @@
 " Summary:       Vim Scala Comment formatting Script
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
 " Last Modified: 07/30/2012
-" Version:       3.0.2
+" Version:       3.0.3
 " Modifications:
 "  2.0 : autoload enabled
 "  1.0 : initial public release.
@@ -292,8 +292,10 @@ let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
 " Summary:       Functions for documenting Scala-code
 " Author:        Richard Emberson <richard.n.embersonATgmailDOTcom>
 " Last Modified: 05/10/2010
-" Version:       3.0.2
+" Version:       3.0.3
 " Modifications:
+"  3.0.3 : Changed from type to kind.
+"  3.0.2 : Vim 7.3 could not handle construct: call funcReturnDictionary().someFunc()
 "  3.0.1 : Chagne name to addon-info.json
 "  3.0   : Support autoloading
 "  2.2   : Method parameter recognition failed def getAtomicVars(atomicMethods:

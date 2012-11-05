@@ -84,7 +84,7 @@ Comment templates can be generated for the following:
   default File Comment template is used (see below).
   
   The StdFileComments() comment is enabled the configuration parameter:
-     let g:scommenter_std_file_comments = g:self#IS_TRUE >
+     let g:scommenter_std_file_comments = 1 >
   /*
    * file name   : bufname("%")
    * authors     : g:scommenter_file_author
@@ -104,7 +104,7 @@ Comment templates can be generated for the following:
 
 
   The ScalaAPIFileComments() comment is enabled the configuration parameter:
-     let g:scommenter_scala_api_file_comments = g:self#IS_TRUE
+     let g:scommenter_scala_api_file_comments = 1
   This is the File Comment used in the Scala library. >
   /*                     __                                               *\
   **     ________ ___   / /  ___     Scala API                            **
@@ -121,7 +121,7 @@ Comment templates can be generated for the following:
   instance, the copyright dates, this VimScript code must be modified.
 
   The SunFileComments() comment is enabled the configuration parameter: >
-     let g:scommenter_sun_file_comments = g:self#IS_TRUE
+     let g:scommenter_sun_file_comments = 1
 <
   This mirrors the File Comments found in Sun's Java libraries. >
   /*
@@ -395,15 +395,15 @@ Remember, if you change these in the code and then upgrade to a later
 version, your changes will be lost.
 
 Move cursor to the place where inserting comments supposedly should start >
-  let g:scommenter_move_cursor = g:self#IS_TRUE
+  let g:scommenter_move_cursor = 1
 <
 Defines whether to move the cursor to the line which has "/**", or the line
 after that (effective only if g:scommenter_move_cursor is enabled) ?
-  let g:scommenter_description_starts_from_first_line = g:self#IS_FALSE
+  let g:scommenter_description_starts_from_first_line = 0
 >
 Start insert mode after calling the commenter. Effective only if 
 g:scommenter_move_cursor is enabled. >
-  let g:scommenter_autostart_insert_mode = g:self#IS_FALSE
+  let g:scommenter_autostart_insert_mode = 0
 <
 The number of empty rows (containing only the star) to be added for the 
 description of the method >
@@ -444,13 +444,13 @@ template parameters or return value, the space for the description of
 that method is allways one row. This is handy if you want to keep an 
 empty line between the description and the tags, as is defined in 
 Sun's java code conventions >
-  let g:scommenter_smart_description_spacing = g:self#IS_TRUE
+  let g:scommenter_smart_description_spacing = 1
 <
 For top-level classes with parameters and template parameters and traits with
 template parameters, if enabled then an empty line separates the 
 @since tag and any @param and/or @tparam tags.
 Note: currently not supported >
-  let g:scommenter_smart_since_spacing = g:self#IS_TRUE
+  let g:scommenter_smart_since_spacing = 1
 <
 The default content for the author-tag of class-comments. Leave empty to add
 just the empty tag, or outcomment to prevent author tag generation >
@@ -484,12 +484,12 @@ to remove it. >
     \]
 <
 Set to true if you don't like the automatically added "created"-time >
-  let g:scommenter_file_noautotime = g:self#IS_FALSE
+  let g:scommenter_file_noautotime = 0
 <
 Define whether scommenter tries to parse and update the existing Doc-comments
 on the item it was executed on. If this feature is disabled, a completely 
 new comment-template is written >
-  let g:scommenter_update_comments = g:self#IS_TRUE
+  let g:scommenter_update_comments = 1
 <
 Whether to prepend an empty line before the generated comment, if the
 line just above the comment would otherwise be non-empty. >
@@ -506,21 +506,21 @@ comment-template:
 "  call append(4, ' *')
 "  call append(5, ' */')
 "endfunction
-Set to g:self#IS_TRUE to use the StdFileComments function to write file 
+Set to 1 to use the StdFileComments function to write file 
 comments >
-  let g:scommenter_std_file_comments = g:self#IS_FALSE
+  let g:scommenter_std_file_comments = 0
 <
-Set to g:self#IS_TRUE to use the ScalaAPIFileComments function to write file 
+Set to 1 to use the ScalaAPIFileComments function to write file 
 comments >
-  let g:scommenter_scala_api_file_comments = g:self#IS_FALSE 
+  let g:scommenter_scala_api_file_comments = 0 
 <
-Set to g:self#IS_TRUE to use the SunFileComments function to write file 
+Set to 1 to use the SunFileComments function to write file 
 comments >
-  let g:scommenter_sun_file_comments = g:self#IS_FALSE
+  let g:scommenter_sun_file_comments = 0
 <
 If true, then only top-level template parameters have @tparam tags 
 generated. If false, then all template parameters have tags generated >
-  let g:scommenter_top_level_tparams_only = g:self#IS_TRUE
+  let g:scommenter_top_level_tparams_only = 1
 <
 Line width of a page. This is used when wrapping text in comments >
   let g:scommenter_page_width = 80
@@ -587,19 +587,19 @@ Method and Field concurrency annotations
 
 If true, then warning messages are printed, otherwise nothing
 If some configuration parameter is not doing what you think it 
-should or nothing is happening, then set this to g:self#IS_TRUE (in your
+should or nothing is happening, then set this to 1 (in your
 .vimrc file using 1) >
-  let g:scommenter_warning_message_enable = g:self#IS_FALSE
+  let g:scommenter_warning_message_enable = 0
 <
 Should an empty comment line be printed between an user/unknown
 tags the standard tags. If there are no user/unknown tags, then
 no line is produced. >
-  let g:scommenter_line_between_user_unknown_and_std_tags = g:self#IS_TRUE
+  let g:scommenter_line_between_user_unknown_and_std_tags = 1
 <
 Should the user/unknown tags be formatted before any of the 
 standard tags. If there are no user/unknown tags, then this
 parameter does nothing. >
-  let g:scommenter_user_unknown_before_std_tags = g:self#IS_TRUE
+  let g:scommenter_user_unknown_before_std_tags = 1
 <
 When re-generating comments sometimes the values associated with of @param
 or @tparam will change but the text associate with the tag still applies.
@@ -610,7 +610,7 @@ If this parameter is true, then rather than being deleted, the original
 tag is move to the bottom of the comment below a warining line.
 This allows the user to move the tags text to the new tag if that is
 what is needed >
-  let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
+  let g:scommenter_warn_deleted_tags = 1
 <
 
 ==============================================================================

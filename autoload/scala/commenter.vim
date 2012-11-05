@@ -64,15 +64,15 @@
 " ============================================================================
 
 " Move cursor to the place where inserting comments supposedly should start
-let g:scommenter_move_cursor = g:self#IS_TRUE
+let g:scommenter_move_cursor = 1
 
 " Defines whether to move the cursor to the line which has "/**", or the line
 "   after that (effective only if g:scommenter_move_cursor is enabled)
-let g:scommenter_description_starts_from_first_line = g:self#IS_FALSE
+let g:scommenter_description_starts_from_first_line = 0
 
 " Start insert mode after calling the commenter. Effective only if 
 "   g:scommenter_move_cursor is enabled.
-let g:scommenter_autostart_insert_mode = g:self#IS_FALSE
+let g:scommenter_autostart_insert_mode = 0
 
 " The number of empty rows (containing only the star) to be added for the 
 "   description of the method
@@ -112,14 +112,14 @@ let g:scommenter_field_description_space = 1
 "   that method is allways one row. This is handy if you want to keep an 
 "   empty line between the description and the tags, as is defined in 
 "   Sun's java code conventions
-let g:scommenter_smart_description_spacing = g:self#IS_TRUE
+let g:scommenter_smart_description_spacing = 1
 
 " For top-level classes with parameters and template parameters and traits with
 "   template parameters, if enabled then an empty line separates the 
 "   @since tag and any @param and/or @tparam tags.
 "
 " Note: currently not supported
-" let g:scommenter_smart_since_spacing = g:self#IS_TRUE
+" let g:scommenter_smart_since_spacing = 1
 
 " The default content for the author-tag of class-comments. Leave empty to add
 "   just the empty tag, or outcomment to prevent author tag generation
@@ -153,12 +153,12 @@ let g:scommenter_file_copyright_list = [
 \]
 
 " Set to true if you don't like the automatically added "created"-time
-let g:scommenter_file_noautotime = g:self#IS_FALSE
+let g:scommenter_file_noautotime = 0
 
 " Define whether scommenter tries to parse and update the existing Doc-comments
 "   on the item it was executed on. If this feature is disabled, a completely 
 "   new comment-template is written
-let g:scommenter_update_comments = g:self#IS_TRUE
+let g:scommenter_update_comments = 1
 
 
 " Whether to prepend an empty line before the generated comment, if the
@@ -177,18 +177,18 @@ let g:scommenter_add_empty_line = 1
 "  call append(5, ' */')
 "endfunction
 
-" Set to g:self#IS_TRUE to use the StdFileComments function to write file comments
-let g:scommenter_std_file_comments = g:self#IS_FALSE
+" Set to 1
+let g:scommenter_std_file_comments = 0
 
-" Set to g:self#IS_TRUE to use the ScalaAPIFileComments function to write file comments
-let g:scommenter_scala_api_file_comments = g:self#IS_FALSE 
+" Set to 1
+let g:scommenter_scala_api_file_comments = 0 
 
-" Set to g:self#IS_TRUE to use the SunFileComments function to write file comments
-let g:scommenter_sun_file_comments = g:self#IS_FALSE
+" Set to 1
+let g:scommenter_sun_file_comments = 0
 
 " If true, then only top-level template parameters have @tparam tags 
 "   generated. If false, then all template parameters have tags generated
-let g:scommenter_top_level_tparams_only = g:self#IS_TRUE
+let g:scommenter_top_level_tparams_only = 1
 
 " Line width of a page. This is used when wrapping text in comments
 let g:scommenter_page_width = 80
@@ -255,19 +255,19 @@ let g:scommenter_user_tags = []
 
 " If true, then warning messages are printed, otherwise nothing
 "   If some configuration parameter is not doing what you think it 
-"   should or nothing is happening, then set this to g:self#IS_TRUE (in your
+"   should or nothing is happening, then set this to 1
 "   .vimrc file using 1)
-let g:scommenter_warning_message_enable = g:self#IS_FALSE
+let g:scommenter_warning_message_enable = 0
 
 " Should an empty comment line be printed between an user/unknown
 "   tags the standard tags. If there are no user/unknown tags, then
 "   no line is produced.
-let g:scommenter_line_between_user_unknown_and_std_tags = g:self#IS_TRUE
+let g:scommenter_line_between_user_unknown_and_std_tags = 1
 
 " Should the user/unknown tags be formatted before any of the 
 "   standard tags. If there are no user/unknown tags, then this
 "   parameter does nothing.
-let g:scommenter_user_unknown_before_std_tags = g:self#IS_TRUE
+let g:scommenter_user_unknown_before_std_tags = 1
       
 " When re-generating comments sometimes the values associated with of @param
 "   or @tparam will change but the text associate with the tag still applies.
@@ -278,7 +278,7 @@ let g:scommenter_user_unknown_before_std_tags = g:self#IS_TRUE
 "   tag is move to the bottom of the comment below a warining line.
 "   This allows the user to move the tags text to the new tag if that is
 "   what is needed
-let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
+let g:scommenter_warn_deleted_tags = 1
 
 " ============================================================================
 " End of Configuration Options
@@ -381,7 +381,7 @@ let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
 "   default File Comment template is used (see below).
 "   
 "   The StdFileComments() comment is enabled the configuration parameter:
-"      let g:scommenter_std_file_comments = g:self#IS_TRUE
+"      let g:scommenter_std_file_comments = 1
 "   
 "   /*
 "    * file name   : bufname("%")
@@ -401,7 +401,7 @@ let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
 "
 "
 "   The ScalaAPIFileComments() comment is enabled the configuration parameter:
-"      let g:scommenter_scala_api_file_comments = g:self#IS_TRUE
+"      let g:scommenter_scala_api_file_comments = 1
 "   This is the File Comment used in the Scala library.   
 "   
 "   /*
@@ -420,7 +420,7 @@ let g:scommenter_warn_deleted_tags = g:self#IS_TRUE
 "
 "
 "   The SunFileComments() comment is enabled the configuration parameter:
-"      let g:scommenter_sun_file_comments = g:self#IS_TRUE
+"      let g:scommenter_sun_file_comments = 1
 "   This mirrors the File Comments found in Sun's Java libraries.
 "   
 "   /*
@@ -914,7 +914,7 @@ let s:indent = l:info.getIndent()
 
       let s:appendPos = l:info.getDocCommentStart() - 1
       let firstLineText = l:info.getFirstLineText() 
-      call s:WriteCommentStart(l:info, firstLineText, g:self#IS_TRUE)
+      call s:WriteCommentStart(l:info, firstLineText, 1
 
       let tagsSet = l:info.getTagsSet()
       let maxTagNameLen = s:FindMaxTagNameLen(tagsSet) 
@@ -1248,8 +1248,8 @@ function! s:loadBaseTagPrototype()
   if !exists("s:BaseTagPrototype")
     let s:BaseTagPrototype = self#LoadObjectPrototype().clone('BaseTag')
     let s:BaseTagPrototype.__tagName = ''
-    let s:BaseTagPrototype.__hasValue = g:self#IS_FALSE
-    let s:BaseTagPrototype.__hasText = g:self#IS_FALSE
+    let s:BaseTagPrototype.__hasValue = 0
+    let s:BaseTagPrototype.__hasText = 0
 
     function! s:BaseTagPrototype.isLeafTag() dict
       throw "Must define in child: isLeafTag"
@@ -1404,12 +1404,12 @@ endif
 function! s:loadLeafTagPrototype()
   if !exists("s:LeafTagPrototype")
     let s:LeafTagPrototype = s:loadBaseTagPrototype().clone('LeafTag')
-    let s:LeafTagPrototype.__canBePoly = g:self#IS_FALSE
+    let s:LeafTagPrototype.__canBePoly = 0
     let s:LeafTagPrototype.__tagValue = ''
     let s:LeafTagPrototype.__tagText = ''
 
     function! s:LeafTagPrototype.isLeafTag() dict
-      return g:self#IS_TRUE
+      return 1
     endfunction
 
     function! s:LeafTagPrototype.toList() dict
@@ -1457,7 +1457,7 @@ function! s:loadLeafTagPrototype()
     endfunction
 
     function! s:LeafTagPrototype.empty() dict
-      return g:self#IS_FALSE
+      return 0
     endfunction
 
     function! s:LeafTagPrototype.write() dict
@@ -1495,7 +1495,7 @@ function! s:loadPolyTagPrototype()
     let s:PolyTagPrototype.__list = []
 
     function! s:PolyTagPrototype.canBePoly() dict
-      return g:self#IS_FALSE
+      return 0
     endfunction
 
     function! s:PolyTagPrototype.getTags() dict
@@ -1503,7 +1503,7 @@ function! s:loadPolyTagPrototype()
     endfunction
 
     function! s:PolyTagPrototype.isLeafTag() dict
-      return g:self#IS_FALSE
+      return 0
     endfunction
 
     function! s:PolyTagPrototype.toList() dict
@@ -1547,9 +1547,9 @@ endfunction
 function! s:newAuthorTag(tagValue)
   let attrs = {
           \ 'tagName': 'author',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_FALSE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 1,
+          \ 'hasText': 0,
+          \ 'canBePoly': 1,
           \ 'tagValue': a:tagValue,
           \ 'tagText': '' 
           \ }
@@ -1571,9 +1571,9 @@ endfunction
 function! s:newVersionTag(tagValue)
   let attrs = {
           \ 'tagName': 'version',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_FALSE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 1,
+          \ 'hasText': 0,
+          \ 'canBePoly': 0,
           \ 'tagValue': a:tagValue,
           \ 'tagText': '' 
           \ }
@@ -1595,9 +1595,9 @@ endfunction
 function! s:newParamTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'param',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 1,
+          \ 'hasText': 1,
+          \ 'canBePoly': 1,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1619,9 +1619,9 @@ endfunction
 function! s:newTParamTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'tparam',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 1,
+          \ 'hasText': 1,
+          \ 'canBePoly': 1,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1643,9 +1643,9 @@ endfunction
 function! s:newReturnTag(tagText)
   let attrs = {
           \ 'tagName': 'return',
-          \ 'hasValue': g:self#IS_FALSE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 0,
+          \ 'hasText': 1,
+          \ 'canBePoly': 0,
           \ 'tagValue': '',
           \ 'tagText': a:tagText
           \ }
@@ -1667,9 +1667,9 @@ endfunction
 function! s:newThrowsTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'throws',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 1,
+          \ 'hasText': 1,
+          \ 'canBePoly': 1,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1692,9 +1692,9 @@ endfunction
 function! s:newSeeTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'see',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 1,
+          \ 'hasText': 1,
+          \ 'canBePoly': 1,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1716,9 +1716,9 @@ endfunction
 function! s:newSinceTag(tagValue)
   let attrs = {
           \ 'tagName': 'since',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_FALSE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 1,
+          \ 'hasText': 0,
+          \ 'canBePoly': 0,
           \ 'tagValue': a:tagValue,
           \ 'tagText': ''
           \ }
@@ -1740,9 +1740,9 @@ endfunction
 function! s:newSerialTag(tagText)
   let attrs = {
           \ 'tagName': 'serial',
-          \ 'hasValue': g:self#IS_FALSE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 0,
+          \ 'hasText': 1,
+          \ 'canBePoly': 0,
           \ 'tagValue': '',
           \ 'tagText': a:tagText
           \ }
@@ -1764,9 +1764,9 @@ endfunction
 function! s:newSerialFieldTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'serialField',
-          \ 'hasValue': g:self#IS_TRUE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 1,
+          \ 'hasText': 1,
+          \ 'canBePoly': 0,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1789,9 +1789,9 @@ endfunction
 function! s:newSerialDataTag(tagValue, tagText)
   let attrs = {
           \ 'tagName': 'serialData',
-          \ 'hasValue': g:self#IS_FALSE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 0,
+          \ 'hasText': 1,
+          \ 'canBePoly': 0,
           \ 'tagValue': a:tagValue,
           \ 'tagText': a:tagText
           \ }
@@ -1813,9 +1813,9 @@ endfunction
 function! s:newDeprecatedTag(tagText)
   let attrs = {
           \ 'tagName': 'deprecated',
-          \ 'hasValue': g:self#IS_FALSE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_FALSE,
+          \ 'hasValue': 0,
+          \ 'hasText': 1,
+          \ 'canBePoly': 0,
           \ 'tagValue': '',
           \ 'tagText': a:tagText
           \ }
@@ -1845,9 +1845,9 @@ function! s:newUnknownTag(tagName, tagValue, tagText)
   endif
   let attrs = {
           \ 'tagName': a:tagName,
-          \ 'hasValue': g:self#IS_FALSE,
-          \ 'hasText': g:self#IS_TRUE,
-          \ 'canBePoly': g:self#IS_TRUE,
+          \ 'hasValue': 0,
+          \ 'hasText': 1,
+          \ 'canBePoly': 1,
           \ 'tagValue': '',
           \ 'tagText': text
           \ }
@@ -2074,7 +2074,7 @@ function! s:loadAbstractEntityPrototype()
     function! s:AbstractEntityPrototype.__makeTParamDict(str, startPos) dict
       let argDict = {}
       let argDict.str = a:str
-      let argDict.atTop = g:self#IS_TRUE
+      let argDict.atTop = 1
       let argDict.topOnly = g:scommenter_top_level_tparams_only 
       let argDict.tparams = []
       let argDict.startPos = a:startPos
@@ -2089,10 +2089,10 @@ function! s:loadAbstractEntityPrototype()
       let atTop = argDict.atTop
       let currentPos = argDict.startPos
       let len = strlen(str)
-      if argDict.topOnly == g:self#IS_TRUE
+      if argDict.topOnly == 1
         let addParam = atTop
       else
-        let addParam = g:self#IS_TRUE
+        let addParam = 1
       endif
 
       let c = strpart(str, currentPos, 1)
@@ -2104,7 +2104,7 @@ function! s:loadAbstractEntityPrototype()
 
         while c != ']' && currentPos < len 
             if c == '['
-              let argDict.atTop = g:self#IS_FALSE
+              let argDict.atTop = 0
 
               " TODO: is this needed
               let argDict.startPos = currentPos
@@ -2134,7 +2134,7 @@ function! s:loadAbstractEntityPrototype()
                 endif
               endif
 
-            elseif c == ',' && addParam == g:self#IS_TRUE
+            elseif c == ',' && addParam == 1
               let tparamStr = s:Trim(strpart(str, startTParam, currentPos - startTParam))
               let c = strpart(tparamStr, 0, 1)
               if c != '['
@@ -2154,7 +2154,7 @@ function! s:loadAbstractEntityPrototype()
 
         let tparamStr = s:Trim(strpart(str, startTParam, currentPos - startTParam))
         let c = strpart(tparamStr, 0, 1)
-        if c != '[' && addParam == g:self#IS_TRUE
+        if c != '[' && addParam == 1
           let tparamName = substitute(tparamStr, '^[+\|-]\?\([^<\|>]\+\).*', '\1', '')
           let tparamName = s:Trim(tparamName)
           if tparamName != ''
@@ -2188,7 +2188,7 @@ function! s:loadAbstractEntityPrototype()
     function! s:AbstractEntityPrototype.__makeParamDict(str, startPos) dict
       let argDict = {}
       let argDict.str = a:str
-      let argDict.atTop = g:self#IS_TRUE
+      let argDict.atTop = 1
       let argDict.params = []
       let argDict.startPos = a:startPos
       let argDict.endPos = -1
@@ -2211,7 +2211,7 @@ function! s:loadAbstractEntityPrototype()
 
         while c != ')' && currentPos < len 
             if c == '('
-              let argDict.atTop = g:self#IS_FALSE
+              let argDict.atTop = 0
               let argDict.startPos = currentPos
     
               call self.__scanParam(argDict)
@@ -2219,7 +2219,7 @@ function! s:loadAbstractEntityPrototype()
               let argDict.atTop = atTop
               let currentPos = argDict.endPos
 
-            elseif c == ',' && atTop == g:self#IS_TRUE && bracketDepth == 0
+            elseif c == ',' && atTop == 1 && bracketDepth == 0
               let pstr = s:Trim(strpart(str, startParam, currentPos - startParam))
               let paramInfo = substitute(pstr, '\([^:]*\).*', '\1', '')
               let paramName = substitute(paramInfo, '\(\S\+\s\+\)*\s*\(\S\+\)\s*', '\2', '')
@@ -2237,7 +2237,7 @@ function! s:loadAbstractEntityPrototype()
             let c = strpart(str, currentPos, 1)
         endwhile
 
-        if atTop == g:self#IS_TRUE
+        if atTop == 1
           let pstr = s:Trim(strpart(str, startParam, currentPos - startParam))
           if pstr != ''
             let paramInfo = substitute(pstr, '\([^:]*\).*', '\1', '')
@@ -2303,15 +2303,15 @@ function! s:loadAbstractEntityPrototype()
           let deletedTags = []
           for oldTag in l:oldTagList
             let oldTagValue = oldTag.getValue()
-            let found = g:self#IS_FALSE
+            let found = 0
             for newTag in l:newTagList
               let newTagValue = newTag.getValue()
               if oldTagValue == newTagValue
-                let found = g:self#IS_TRUE
+                let found = 1
                 break
               endif
             endfor
-            if found == g:self#IS_FALSE
+            if found == 0
               call add(deletedTags, oldTag)
             endif
           endfor
@@ -2382,14 +2382,14 @@ function! s:loadAbstractEntityPrototype()
       let key = 'author'
       if exists('g:scommenter_class_author')
         let authorValue = g:scommenter_class_author
-        let found = g:self#IS_FALSE
+        let found = 0
         for authorTag in l:commentTagsSet.toList(key)
           if authorTag.getValue() == authorValue
-            let found = g:self#IS_TRUE
+            let found = 1
             break
           endif
         endfor
-        if found == g:self#IS_FALSE
+        if found == 0
           let authorTag = s:newAuthorTag(authorValue)
           call l:commentTagsSet.append(authorTag)
         endif
@@ -2999,19 +2999,19 @@ function! s:loadMethodEntityPrototype()
             endif
           else
             " boolean return value, i.e.,  def isFoo = foo or def hasFoo = foo
-            let found = g:self#IS_FALSE
+            let found = 0
             for bname in g:booleanNames
               let mpos = match(method_name, bname)
               if mpos == 0
                 let returnTag = s:newReturnTag('Boolean ' . strpart(method_name, len(bname)))
                 let tags = l:info.getTagsSet()
                 call tags.append(returnTag)
-                let found = g:self#IS_TRUE
+                let found = 1
                 break
               endif
             endfor
 
-            if found == g:self#IS_FALSE
+            if found == 0
               let returnTag = s:newReturnTag('Unknown')
               let tags = l:info.getTagsSet()
               call tags.append(returnTag)
@@ -3114,7 +3114,7 @@ endfunction
 "     initialization has occurred.
 " --------------------------------------------------------
 function! s:ResetAll()
-  if s:isInitialized == g:self#IS_FALSE
+  if s:isInitialized == 0
     call s:Initialize()
   endif
 endfunction
@@ -3122,14 +3122,14 @@ endfunction
 " ++++++++++++++++++++++++++++++++++++++++++++
 " Has the script been initialized
 " ++++++++++++++++++++++++++++++++++++++++++++
-let s:isInitialized = g:self#IS_FALSE
+let s:isInitialized = 0
 
 " --------------------------------------------------------
 " Initialize: {{{2
 "   Initialization is done once.
 " --------------------------------------------------------
 function! s:Initialize()
-  if s:isInitialized == g:self#IS_FALSE
+  if s:isInitialized == 0
     "-------------------------------------------
     " Initialized Description Space
     "   These MUST be in the order of the 
@@ -3138,7 +3138,7 @@ function! s:Initialize()
     call s:LoadDescriptionSpace()
     call s:CheckConfiguationParameterValues()
 
-    let s:isInitialized = g:self#IS_TRUE
+    let s:isInitialized = 1
   endif
 
 endfunction
@@ -3526,7 +3526,7 @@ function! s:UpdateAllTags(info)
   call s:DeleteExistingComment(l:info)
 
   " write /** (optional first line text)
-  call s:WriteCommentStart(l:info, l:info.comment.firstLineText, g:self#IS_FALSE)
+  call s:WriteCommentStart(l:info, l:info.comment.firstLineText, 0)
 
   " write existing comment normal lines
   call s:WriteExistingCommentNormalLines(l:info)
@@ -3680,7 +3680,7 @@ function! s:WriteSpacingNormalLinesAndTags(info)
   if ! exists("g:scommenter_smart_description_spacing")
     return
   endif
-  if g:scommenter_smart_description_spacing == g:self#IS_FALSE
+  if g:scommenter_smart_description_spacing == 0
     return
   endif
 
@@ -3689,7 +3689,7 @@ function! s:WriteSpacingNormalLinesAndTags(info)
   endif
 
   " are there non-empty normal lines
-  let foundNormalLine = g:self#IS_FALSE
+  let foundNormalLine = 0
 
   let len = len(info.comment.lineList) 
   let index = len - 1
@@ -3701,14 +3701,14 @@ function! s:WriteSpacingNormalLinesAndTags(info)
         " do not need to add one.
         return
       else
-        let foundNormalLine = g:self#IS_TRUE
+        let foundNormalLine = 1
         break
       endif
     endif
     let index = index - 1
   endwhile
 
-  if foundNormalLine == g:self#IS_FALSE
+  if foundNormalLine == 0
     " no normal lines
     return 
   endif
@@ -3744,7 +3744,7 @@ function! s:WriteCommentStart(info, firstLineText, firsttime)
     call s:AppendStr('/**')
   endif
 
-  if a:firsttime == g:self#IS_TRUE
+  if a:firsttime == 1
     let i = info.getDescriptionSpace()
     while i > 0
       call s:AppendStr(' * ')
@@ -3837,9 +3837,9 @@ let s:DOC_COMMENT_TYPE_MULTI_LINE = 2
 " --------------------------------------------------------
 function! s:HasDocComments(info)
   let l:info = a:info
-  if s:HasSingleLineDocComments(l:info) == g:self#IS_TRUE
+  if s:HasSingleLineDocComments(l:info) == 1
     return s:DOC_COMMENT_TYPE_SINGLE_LINE 
-  elseif s:HasMultilineDocComments(l:info) == g:self#IS_TRUE
+  elseif s:HasMultilineDocComments(l:info) == 1
     return s:DOC_COMMENT_TYPE_MULTI_LINE 
   else
     call l:info.setDocCommentStart(s:rangeStart - l:info.getAnnotationCount())
@@ -3866,9 +3866,9 @@ function! s:HasSingleLineDocComments(info)
     call l:info.setSingleLineCommentPos(linenum)
     call l:info.setDocCommentStart(linenum)
     call l:info.setDocCommentEnd(linenum)
-    return g:self#IS_TRUE
+    return 1
   endif
-  return g:self#IS_FALSE
+  return 0
 endfunction
 
 " --------------------------------------------------------
@@ -3889,7 +3889,7 @@ function! s:HasMultilineDocComments(info)
 
   " not at a comment, return false
   if str !~ '\*/\s*$' || str =~ '/\*\*.*\*/'
-    return g:self#IS_FALSE
+    return 0
   endif
 
   " move up the comment
@@ -3905,9 +3905,9 @@ function! s:HasMultilineDocComments(info)
   if str =~ '^\s*/\*\*'
     call l:info.setDocCommentEnd(l:docCommentEnd)
     call l:info.setDocCommentStart(linenum)
-    return g:self#IS_TRUE
+    return 1
   else
-    return g:self#IS_FALSE
+    return 0
   endif
 endfunction
 
@@ -4070,14 +4070,14 @@ function! s:WriteTags(tagsSet, maxTagNameLen, tagTextOffset)
   " any tags not part of the standard tags
   let userOfUnknownTagNames = []
   for tagName in keys(tags)
-    let found = g:self#IS_FALSE
+    let found = 0
     for stdTagName in s:stdTagOrder
       if tagName == stdTagName
-        let found = g:self#IS_TRUE
+        let found = 1
         break
       endif
     endfor
-    if found == g:self#IS_FALSE
+    if found == 0
       call add(userOfUnknownTagNames, tagName)
     endif
   endfor
@@ -4087,14 +4087,14 @@ function! s:WriteTags(tagsSet, maxTagNameLen, tagTextOffset)
   if exists("g:scommenter_line_between_user_unknown_and_std_tags") && g:scommenter_line_between_user_unknown_and_std_tags
     let hasLine = ! empty(userOfUnknownTagNames)
   else
-    let hasLine = g:self#IS_FALSE
+    let hasLine = 0
   endif
 
   " should user/unknown tags appear before standard tags
   if exists("g:scommenter_user_unknown_before_std_tags") && g:scommenter_user_unknown_before_std_tags
-    let userOrUnknowBeforeStd = g:self#IS_TRUE
+    let userOrUnknowBeforeStd = 1
   else
-    let userOrUnknowBeforeStd = g:self#IS_FALSE
+    let userOrUnknowBeforeStd = 0
   endif
 
   if userOrUnknowBeforeStd

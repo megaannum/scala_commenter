@@ -776,7 +776,7 @@ let b:scala_commenter_loaded = 1
 "    call self#reload('scala#commenter#')
 "    call self#reload('self#')
 "  This function is only available in development mode, i.e.,
-"    g:self#IN_DEVELOPMENT_MODE == self#IS_TRUE
+"    g:self#IN_DEVELOPMENT_MODE == 1
 "  To make reloading of autoloaded scala#commenter functions simple, one might
 "    want to define a mapping:
 "      map <Leader>sr :call scala#commenter#reload()
